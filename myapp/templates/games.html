@@ -1,0 +1,840 @@
+{%extends "layout.html" %}
+{% block content %}
+<div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            チャット
+        </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <form action="./games" method="POST">
+                    <label class="form-label">ユーザ名:</label>
+                    {% if not "uname" in session %}
+                        <input class="form-control" type="text" name="uname"><br />
+                    {% else %}
+                        <input class="form-control" type="text" value ={{ session["uname"] }}  name="uname"><br />
+                    {% endif %}
+                    <label class="form-label">message:</label>
+                    <input class="form-control" type="text" name="message" size="40"><br />
+                    <input class="btn btn-primary" type="submit" value="chat!">
+                </form>
+                <ul>
+                
+                <div class="form-group mt-3">
+                <form>
+                    <select multiple class="form-control">
+                    {% for eachpost in chat %}
+                        <option>
+                            {{ eachpost[1] }}: {{ eachpost[2] }} ({{ eachpost[3] }})
+                        </option>
+                    {% endfor %}
+                    </select>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container bg-light mt-3 mb-5">
+    <h1>試合日程・結果</h1>
+    <h2 class="m-3"><span class="badge bg-secondary">グループステージ・第１日（全３日）</span></h2>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループA・第１日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11jlxs1nl6;2;/m/030q7;dt;fp;1;;;">カタール VS エクアドル</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/21</li>
+                    <li class="list-group-item">1:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループB・第１日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11pz0xcxh4;2;/m/030q7;dt;fp;1;;;">イングランド VS イラン</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/21</li>
+                    <li class="list-group-item">22:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループA・第１日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11spnyr0ln;2;/m/030q7;dt;fp;1;;;">セネガル VS オランダ</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/22</li>
+                    <li class="list-group-item">1:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループB・第１日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11pz0xfqrq;2;/m/030q7;dt;fp;1;;;">アメリカ VS ウェールズ</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/22</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループC・第１日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11pz0xdxn0;2;/m/030q7;dt;fp;1;;;">アルゼンチン VS サウジアラビア</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/22</li>
+                    <li class="list-group-item">19:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループD・第１日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11pz0xdfz3;2;/m/030q7;dt;fp;1;;;">デンマーク VS チュニジア</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/22</li>
+                    <li class="list-group-item">22:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループC・第１日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11rq1ynfxq;2;/m/030q7;dt;fp;1;;;">メキシコ VS ポーランド</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/23</li>
+                    <li class="list-group-item">1:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループD・第１日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11spnyz1_s;2;/m/030q7;dt;fp;1;;;">フランス VS オーストリア</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/23</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループF・第１日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11pz0xm65t;2;/m/030q7;dt;fp;1;;;">モロッコ VS クロアチア</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/21</li>
+                    <li class="list-group-item">19:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループE・第１日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11spnyrxp_;2;/m/030q7;dt;fp;1;;;">ドイツ VS 日本</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/23</li>
+                    <li class="list-group-item">22:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループE・第１日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11spnyqzsy;2;/m/030q7;dt;fp;1;;;">スペイン VS コスタリカ</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/24</li>
+                    <li class="list-group-item">1:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループF・第１日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11spnyvbdl;2;/m/030q7;dt;fp;1;;;">ベルギー VS カナダ</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/24</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループG・第１日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11spnz4q4c;2;/m/030q7;dt;fp;1;;;">スイス VS カメルーン</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/24</li>
+                    <li class="list-group-item">19:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループH・第１日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11spny_y9v;2;/m/030q7;dt;fp;1;;;">ウルグアイ VS 韓国</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/24</li>
+                    <li class="list-group-item">22:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループH・第１日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11rq1z2nn2;2;/m/030q7;dt;fp;1;;;">ポルトガル VS ガーナ</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/25</li>
+                    <li class="list-group-item">1:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループG・第１日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11spnz1c_1;2;/m/030q7;dt;fp;1;;;">ブラジル VS セルビア</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/25</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <h2 class="m-3"><span class="badge bg-secondary">グループステージ・第２日（全３日）</span></h2>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループB・第２日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11pz0xc5lj;2;/m/030q7;dt;fp;1;;;">ウェールズ VS イラン</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/25</li>
+                    <li class="list-group-item">19:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループA・第２日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11spnys7jb;2;/m/030q7;dt;fp;1;;;">カタール VS セネガル</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/25</li>
+                    <li class="list-group-item">22:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループA・第２日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11spnykxwt;2;/m/030q7;dt;fp;1;;;">オランダ VS エクアドル</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/26</li>
+                    <li class="list-group-item">1:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループB・第２日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11rq1yn7mq;2;/m/030q7;dt;fp;1;;;">イングランド VS アメリカ</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/26</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループD・第２日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11rq1ywyxm;2;/m/030q7;dt;fp;1;;;">チュニジア VS オーストラリア</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/26</li>
+                    <li class="list-group-item">19:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループC・第２日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11pz0xhssj;2;/m/030q7;dt;fp;1;;;">ポーランド VS サウジアラビア</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/26</li>
+                    <li class="list-group-item">22:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループD・第２日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11rq1yw8zc;2;/m/030q7;dt;fp;1;;;">フランス VS デンマーク</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/27</li>
+                    <li class="list-group-item">1:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループC・第２日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11pz0xgzbp;2;/m/030q7;dt;fp;1;;;">アルゼンチン VS メキシコ</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/27</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループE・第２日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11pz0xg9v5;2;/m/030q7;dt;fp;1;;;">日本 VS コスタリカ</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/27</li>
+                    <li class="list-group-item">19:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループF・第２日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11rq1yqdbb;2;/m/030q7;dt;fp;1;;;">ベルギー VS モロッコ</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/27</li>
+                    <li class="list-group-item">22:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループF・第２日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11spnytbtg;2;/m/030q7;dt;fp;1;;;">クロアチア VS カナダ</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/28</li>
+                    <li class="list-group-item">1:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループE・第２日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11spnywqh1;2;/m/030q7;dt;fp;1;;;">スペイン VS ドイツ</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/28</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループG・第２日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11rq1z0h3c;2;/m/030q7;dt;fp;1;;;">カメルーン VS セルビア</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/28</li>
+                    <li class="list-group-item">19:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループH・第２日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11pz0xnh3t;2;/m/030q7;dt;fp;1;;;">韓国 VS ガーナ</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/28</li>
+                    <li class="list-group-item">22:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループG・第２日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11pz0xv7k8;2;/m/030q7;dt;fp;1;;;">ブラジル VS スイス</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/29</li>
+                    <li class="list-group-item">1:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループH・第２日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11rq1z5w1m;2;/m/030q7;dt;fp;1;;;">ポルトガル VS ウルグアイ</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/29</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <h2 class="m-3"><span class="badge bg-secondary">グループステージ・第３日（全３日）</span></h2>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループA・第３日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11pz0x9q0c;2;/m/030q7;dt;fp;1;;;">エクアドル VS セネガル</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/30</li>
+                    <li class="list-group-item">0:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループA・第３日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11pz0xcd15;2;/m/030q7;dt;fp;1;;;">オランダ VS カタール</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/30</li>
+                    <li class="list-group-item">0:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループB・第３日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11rq1ym5x8;2;/m/030q7;dt;fp;1;;;">イラン VS アメリカ</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/30</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループB・第３日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11spnypbd5;2;/m/030q7;dt;fp;1;;;">ウェールズ VS イングランド</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">11/30</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループD・第３日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11pz0xf4ld;2;/m/030q7;dt;fp;1;;;">チュニジア VS フランス</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/1</li>
+                    <li class="list-group-item">0:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループD・第３日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11spnyz1_j;2;/m/030q7;dt;fp;1;;;">オーストラリア VS デンマーク</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/1</li>
+                    <li class="list-group-item">0:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループC・第３日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11pz0xc18c;2;/m/030q7;dt;fp;1;;;">ポーランド VS アルゼンチン</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/1</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループC・第３日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11spnytv3l;2;/m/030q7;dt;fp;1;;;">サウジアラビア VS メキシコ</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/1</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループF・第３日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11pz0xhssz;2;/m/030q7;dt;fp;1;;;">クロアチア VS ベルギー</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/2</li>
+                    <li class="list-group-item">0:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループF・第３日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11rq1z3ddq;2;/m/030q7;dt;fp;1;;;">カナダ VS モロッコ</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/2</li>
+                    <li class="list-group-item">0:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループE・第３日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11pz0xg2kk;2;/m/030q7;dt;fp;1;;;">日本 VS スペイン</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/2</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループE・第３日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11spnyqsbq;2;/m/030q7;dt;fp;1;;;">コスタリカ VS ドイツ</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/2</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループH・第３日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11pz0xr3gs;2;/m/030q7;dt;fp;1;;;">韓国 VS ポルトガル</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/3</li>
+                    <li class="list-group-item">0:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループH・第３日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11rq1z1pn9;2;/m/030q7;dt;fp;1;;;">ガーナ VS ウルグアイ</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/3</li>
+                    <li class="list-group-item">0:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループG・第３日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11spnyz8qh;2;/m/030q7;dt;fp;1;;;">セルビア VS スイス</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/3</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">グループG・第３日（全３日）</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11spnz0dkc;2;/m/030q7;dt;fp;1;;;">カメルーン VS ブラジル</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/3</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <h2 class="m-3"><span class="badge bg-secondary">ラウンド16</span></h2>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">ラウンド16</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11jk2056hm;2;/m/030q7;dt;fp;1;;;">未定 VS 未定</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/4</li>
+                    <li class="list-group-item">0:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">ラウンド16</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11jk225_hv;2;/m/030q7;dt;fp;1;;;">未定 VS 未定</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/4</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">ラウンド16</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11k5hbzwdc;2;/m/030q7;dt;fp;1;;;">未定 VS 未定</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/5</li>
+                    <li class="list-group-item">0:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">ラウンド16</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11jlxskttd;2;/m/030q7;dt;fp;1;;;">未定 VS 未定</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/5</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">ラウンド16</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11jk20k3mg;2;/m/030q7;dt;fp;1;;;">未定 VS 未定</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/6</li>
+                    <li class="list-group-item">0:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">ラウンド16</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11jlxt6219;2;/m/030q7;dt;fp;1;;;">未定 VS 未定</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/6</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">ラウンド16</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11jk1_h654;2;/m/030q7;dt;fp;1;;;">未定 VS 未定</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/7</li>
+                    <li class="list-group-item">0:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">ラウンド16</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11jlxsnd6z;2;/m/030q7;dt;fp;1;;;">未定 VS 未定</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/7</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <h2 class="m-3"><span class="badge bg-secondary">準々決勝</span></h2>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">準々決勝</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11k5hffyn7;2;/m/030q7;dt;fp;1;;;">未定 VS 未定</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/10</li>
+                    <li class="list-group-item">0:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">準々決勝</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11k5hck7cc;2;/m/030q7;dt;fp;1;;;">未定 VS 未定</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/10</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">準々決勝</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11jlxrgm8j;2;/m/030q7;dt;fp;1;;;">未定 VS 未定</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/11</li>
+                    <li class="list-group-item">0:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">準々決勝</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11k5hcnd3j;2;/m/030q7;dt;fp;1;;;">未定 VS 未定</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/11</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <h2 class="m-3"><span class="badge bg-secondary">準決勝</span></h2>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">準決勝</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11jk2283h2;2;/m/030q7;dt;fp;1;;;">未定 VS 未定</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/14</li>
+                    <li class="list-group-item">0:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">準決勝</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11k5hd8qrz;2;/m/030q7;dt;fp;1;;;">未定 VS 未定</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/15</li>
+                    <li class="list-group-item">4:00</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <h2 class="m-3"><span class="badge bg-secondary">３位決定戦</span></h2>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">３位決定戦</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11k5h9_683;2;/m/030q7;dt;fp;1;;;">未定 VS 未定</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/18</li>
+                    <li class="list-group-item">0:00</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <h2 class="m-3"><span class="badge bg-secondary">決勝</span></h2>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">決勝</h5>
+                    <p class="card-text"><a href="https://www.google.com/search?q=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97+%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&oq=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%E3%80%80%E8%A9%A6%E5%90%88%E6%97%A5%E7%A8%8B&aqs=chrome..69i57.11483j1j15&sourceid=chrome&ie=UTF-8#sie=m;/g/11k5hcbv8w;2;/m/030q7;dt;fp;1;;;">未定 VS 未定</a></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">12/19</li>
+                    <li class="list-group-item">0:00</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="blog-footer">
+    <!-- <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p> -->
+    <!-- <p><a href="#">Back to top</a></p> -->
+</footer>
+{% endblock %}

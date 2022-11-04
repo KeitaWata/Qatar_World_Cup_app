@@ -1,0 +1,51 @@
+{%extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <!-- <img src="{{ url_for("static", filename="images/title.png") }}" class="img-fluid">
+
+    <h2 class="m-3"><span class="badge bg-secondary">コンテンツ１</span></h2>
+
+    <h2 class="m-3"><span class="badge bg-secondary">コンテンツ２</span></h2> -->
+    <main class="container">
+        <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+            <div class="col-md-6 px-0">
+                <h1 class="display-4 fst-italic">FIFA World Cup<br>カタール 2022<br>情報まとめサイト</h1>
+                <p class="lead my-3">今大会の試合日程や結果、選手情報など様々な情報をお届けします！! ぜひログインして、大会に関する意見をチャット機能で投稿してください!!</p>
+                {% if not "uname" in session %}
+                    <p class="lead mb-0"><a href="./login" class="text-white fw-bold">Go to login...</a></p>
+                {% else %}
+                    <p class="lead mb-0">Welcome, {{ session["uname"] }}!</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-primary">コンテンツ１</strong>
+                    <h3 class="mb-0">試合日程・結果</h3>
+                    <div class="mb-1 text-muted">全64試合</div>
+                    <p class="card-text mb-auto">今大会の試合日程や結果をまとめています。また、チャット機能で多くの人とコミュニケーションを取ることも可能です。</p>
+                    <a href="{{ url_for('games') }}" class="stretched-link">Go to the games page...</a>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-success">コンテンツ２</strong>
+                    <h3 class="mb-0">出場国詳細</h3>
+                    <div class="mb-1 text-muted">全32ヵ国</div>
+                    <p class="card-text mb-auto">今大会に出場する全32ヵ国の選手や監督の情報をまとめています。</p>
+                    <a href="{{ url_for('countries') }}" class="stretched-link">Go to the countries page...</a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="blog-footer">
+        <!-- <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p> -->
+        <!-- <p><a href="#">Back to top</a></p> -->
+    </footer>
+</div>
+{% endblock %}

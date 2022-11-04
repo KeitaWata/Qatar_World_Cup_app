@@ -1,0 +1,41 @@
+{%extends "layout.html" %}
+{% block content %}
+<div class="container bg-light mt-3 mb-5">
+    <h1>{{ contents }}代表</h1>
+    <h3 class="text-success m-3">■代表メンバー（Coming soon...）</h3>
+    <div class="m-3">
+        <h5>▽GK</h5>
+        {% for eachpost in gk %}
+        <li><a href="{{ eachpost[3] }}">{{ eachpost[1] }}: {{ eachpost[0] }} ({{ eachpost[2] }})</li></a>
+        {% endfor %}
+    </div>
+    <div class="m-3">
+        <h5>▽DF</h5>
+        {% for eachpost in df %}
+        <li><a href="{{ eachpost[3] }}">{{ eachpost[1] }}: {{ eachpost[0] }} ({{ eachpost[2] }})</li></a>
+        {% endfor %}
+    </div>
+    <div class="m-3">
+        <h5>▽MF</h5>
+        {% for eachpost in mf %}
+        <li><a href="{{ eachpost[3] }}">{{ eachpost[1] }}: {{ eachpost[0] }} ({{ eachpost[2] }})</li></a>
+        {% endfor %}
+    </div>
+    <div class="m-3">
+        <h5>▽FW</h5>
+        {% for eachpost in fw %}
+        <li><a href="{{ eachpost[3] }}">{{ eachpost[1] }}: {{ eachpost[0] }} ({{ eachpost[2] }})</li></a>
+        {% endfor %}
+    </div>
+    <h3 class="text-success m-3">■監督</h3>
+    <div class="m-3">
+        {% for eachpost in mn %}
+        <li><a href="{{ eachpost[1] }}">{{ eachpost[0] }}</li></a>
+        {% endfor %}
+    </div>
+</div>
+<footer class="blog-footer">
+    <!-- <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p> -->
+    <!-- <p><a href="#">Back to top</a></p> -->
+</footer>
+{% endblock %}

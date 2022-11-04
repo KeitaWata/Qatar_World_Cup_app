@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container">
+    <h1>Register</h1>
+    <form method="POST" action="./registing">
+    ユーザ名: <input type="text" class="form-control" name="unf" size="40"><br>
+    email:<input type="text" class="form-control" name="emf" size="40"><br>
+    password:<input type="password" class="form-control" name="pwf1" size="40"><br>
+    password（確認）:<input type="password" class="form-control" name="pwf2" size="40"><br>
+    <!-- <input type="submit" value="登録"> -->
+    <button type="submit" class="btn btn-primary">登録</button>
+    </form>
+</div>
+
+{% endblock %}

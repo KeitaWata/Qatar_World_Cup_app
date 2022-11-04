@@ -1,0 +1,14 @@
+{%extends "layout.html" %}
+{% block content %}
+
+<form action="./" method="POST">
+ユーザ名: <input type="text" name="uname"><br />
+message: <input type="text" name="message" size="40"><br />
+<input type="submit" value="chat!">
+</form>
+
+<ul>
+{% for eachpost in chat %}
+    <li>{{ eachpost[1] }}: {{ eachpost[2] }} ({{ eachpost[3] }})</li>
+{% endfor %}
+{% endblock %}

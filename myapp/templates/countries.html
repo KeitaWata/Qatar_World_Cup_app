@@ -1,0 +1,290 @@
+{%extends "layout.html" %}
+{% block content %}
+<div class="container bg-light mt-3 mb-5">
+    <h1>出場国一覧</h1>
+    <h2 class="m-3"><span class="badge bg-secondary">グループA</span></h2>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Qatar.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=カタール">カタール</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Ecuador.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=エクアドル">エクアドル</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Senegal.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=セネガル">セネガル</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Netherlands.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=オランダ">オランダ</a></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2 class="m-3"><span class="badge bg-secondary">グループB</span></h2>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/England.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=イングランド">イングランド</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Iran.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=イラン">イラン</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/USA.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=アメリカ">アメリカ</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Wales.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=ウェールズ">ウェールズ</a></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2 class="m-3"><span class="badge bg-secondary">グループC</span></h2>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Argentina.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=アルゼンチン">アルゼンチン</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/SaudiArabia.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=サウジアラビア">サウジアラビア</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Mexico.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=メキシコ">メキシコ</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Poland.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=ポーランド">ポーランド</a></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2 class="m-3"><span class="badge bg-secondary">グループD</span></h2>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/France.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=フランス">フランス</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Australia.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=オーストラリア">オーストラリア</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Denmark.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=デンマーク">デンマーク</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Tunisia.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=チュニジア">チュニジア</a></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2 class="m-3"><span class="badge bg-secondary">グループE</span></h2>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Spain.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=スペイン">スペイン</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/CostaRica.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=コスタリカ">コスタリカ</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Germany.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=ドイツ">ドイツ</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Japan.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=日本">日本</a></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2 class="m-3"><span class="badge bg-secondary">グループF</span></h2>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Belgium.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=ベルギー">ベルギー</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Canada.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=カナダ">カナダ</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Morocco.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=モロッコ">モロッコ</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Croatia.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=クロアチア">クロアチア</a></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2 class="m-3"><span class="badge bg-secondary">グループG</span></h2>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Brazil.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=ブラジル">ブラジル</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Serbia.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=セルビア">セルビア</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Switzerland.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=スイス">スイス</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Cameroon.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=カメルーン">カメルーン</a></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2 class="m-3"><span class="badge bg-secondary">グループH</span></h2>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Porutugal.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=ポルトガル">ポルトガル</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Ghana.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=ガーナ">ガーナ</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Uruguay.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=ウルグアイ">ウルグアイ</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for("static", filename="images/Korea.png") }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href="details?id=韓国">韓国</a></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="blog-footer">
+    <!-- <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p> -->
+    <!-- <p><a href="#">Back to top</a></p> -->
+</footer>
+{% endblock %}
